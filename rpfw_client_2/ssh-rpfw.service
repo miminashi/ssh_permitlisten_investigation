@@ -1,0 +1,16 @@
+[Unit]
+Description=ssh reverse port forwarding service
+#After=network.target auditd.service
+After=network.target auditd.service
+
+[Service]
+User=pi
+Group=pi
+WorkingDirectory=/home/pi
+ExecStart=/usr/bin/ssh -o ServerAliveInterval=5 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes -o TCPKeepAlive=no -N -R 22302:127.0.0.1:22 -i /home/pi/.ssh/id_ed25519 rpfw@rpfw-server
+Restart=always
+RestartSec=1
+StartLimitBurst=0
+
+[Install]
+WantedBy=multi-user.target

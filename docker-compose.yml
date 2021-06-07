@@ -1,0 +1,23 @@
+version: '3'
+services:
+  rpfw_server:
+    build: ./rpfw_server
+    image: rpfw_server
+    container_name: rpfw_server
+    restart: always
+    privileged: true
+    hostname: rpfw-server
+  rpfw_client_1:
+    build: ./rpfw_client_1
+    image: rpfw_client_1
+    container_name: rpfw_client_1
+    restart: always
+    privileged: true
+    hostname: rpfw-client-1
+  rpfw_client_2:
+    build: ./rpfw_client_2
+    image: rpfw_client_2
+    container_name: rpfw_client_2
+    restart: always
+    privileged: true
+    hostname: rpfw-client-2
