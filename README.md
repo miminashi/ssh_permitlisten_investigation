@@ -25,6 +25,16 @@ docker compose down
 docker exec -it rpfw_server ss -ltp4
 ```
 
+以下のように`22301`と`22302`でLISTENしていればOK
+
+```
+State    Recv-Q   Send-Q   Local Address:Port   Peer Address:Port
+LISTEN   0        1024     127.0.0.11:43253     0.0.0.0:*
+LISTEN   0        128      0.0.0.0:22           0.0.0.0:*            users:(("sshd",pid=43,fd=3))
+LISTEN   0        128      127.0.0.1:22301      0.0.0.0:*            users:(("sshd",pid=58,fd=10))
+LISTEN   0        128      127.0.0.1:22302      0.0.0.0:*            users:(("sshd",pid=63,fd=10))
+```
+
 ## それぞれのコンテナにシェルログイン
 
 ```sh
